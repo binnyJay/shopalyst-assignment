@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="searchApp">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="scripts.js"></script>
+</head>
+<body ng-controller="searchCtrl">
+<div layout="row" layout-xs="column" layout-align="center center">
+    <div layout="row" flex="90">
+    <h1 hide-xs>Search your item :</h1>
+     <h4 hide-gt-xs>Search your item :</h4>
+</div>
+</div>
+<div layout="row" layout-xs="column" layout-align="center center">
+   <div layout="row" layout-xs="column" flex="80" flex-sm="90">
+       <div flex="20" flex-xs="100" style="margin-bottom: 10px;">
+           <input type="search" ng-model="searchText" placeholder="Product name">
+       </div>
+       <div flex="60" flex-xs="100" style="margin-bottom: 10px;">
+          <span><b>Merchant Filter: </b></span>
+           Flipkart :  <input type="checkbox" ng-model="FlipkartFilter" value="Flipkart">
+           Amazon :  <input type="checkbox" ng-model="AmazonFilter" value="Amazon">
+           Snapdeel :  <input type="checkbox" ng-model="SnapdeelFilter" value="Snapdeel">
+       </div>
+       <div flex="20" flex-xs="100">
+           <button ng-click="searchItem()">Search</button>
+       </div>
+   </div>
+
+</div>
+<div layout="row" layout-align="center" style="margin-top: 30px;">
+<div flex="90" flex-sm="100" flex-md="100" layout="row" layout-wrap>
+<div ng-repeat="a in item.productList" flex="25" flex-xs="100" flex-sm="30" style="padding: 3px;">
+    <a href="{{a.productUrl}}" target="_blank" style="text-decoration:none; color:black;">
+        <div style="margin-bottom: 20px;text-align: center">
+            <img src="{{a.imageUrl}}" alt="image" title="product image" height="160" width="160" style="margin-bottom: 5px;">
+            <div style="margin-top: -25px;"><h3 hide-xs> {{a.title}}</h3><h5 hide-sm hide-md>{{a.title}}</h5><h6>{{a.title}}</h6>
+            </div>
+            <div style="margin-top: -20px;">Price : {{a.salePrice}}</div>
+            <div style="margin-top: -17px;"><hr width="80" style="margin-left: 10px;"></div>
+            <div>Discounted Price : {{a.offerPrice}}</div>
+        </div>
+    </a>
+</div>
+</div>
+</div>
+</body>
+</html>
